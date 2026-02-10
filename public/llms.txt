@@ -1,0 +1,65 @@
+# Travel enjoyed — Generative Engine Optimization Map
+
+> A General business.
+
+---
+
+## Pages
+
+### Home
+https://travel-enjoyed-c7ae8049.zappy5.app
+
+### About
+https://travel-enjoyed-c7ae8049.zappy5.app/about
+
+### Offerings
+https://travel-enjoyed-c7ae8049.zappy5.app/offerings
+
+### Contact
+https://travel-enjoyed-c7ae8049.zappy5.app/contact
+
+### Products
+https://travel-enjoyed-c7ae8049.zappy5.app/products
+Our Products - Travel enjoyed
+
+### Product Detail
+https://travel-enjoyed-c7ae8049.zappy5.app/product/:slug
+Product Details - Travel enjoyed
+
+### Category
+https://travel-enjoyed-c7ae8049.zappy5.app/category/:slug
+Products - Travel enjoyed
+
+## Legal & Policy
+
+### Privacy Policy
+https://travel-enjoyed-c7ae8049.zappy5.app/privacy
+Information about how user data is collected, stored, and protected.
+
+### Terms & Conditions
+https://travel-enjoyed-c7ae8049.zappy5.app/terms
+Legal terms describing service usage, rights, and policies.
+
+### Accessibility Statement
+https://travel-enjoyed-c7ae8049.zappy5.app/accessibility
+Information about WCAG compliance and accessibility features.
+
+---
+
+# Business Context (for LLM understanding)
+
+## About Travel enjoyed
+Travel enjoyed is a business in the General industry.
+
+## Target Audience
+- Adventure Seekers
+
+## Industry
+General
+
+---
+
+# Additional Resources
+
+- **Sitemap**: https://travel-enjoyed-c7ae8049.zappy5.app/sitemap.xml
+- **Robots.txt**: https://travel-enjoyed-c7ae8049.zappy5.app/robots.txt

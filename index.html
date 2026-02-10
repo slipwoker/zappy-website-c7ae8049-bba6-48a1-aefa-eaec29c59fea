@@ -1,0 +1,653 @@
+<!DOCTYPE html><html lang="en" dir="ltr" data-zappy-site-type="ecommerce"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Travel enjoyed | ccac course catalog</title>
+  <meta name="description" content="Home - Travel enjoyed provides professional General services. Specializing in ccac course catalog.">
+  <meta name="keywords" content="ccac course catalog, tcc course catalog, mcc course catalog, course catalog">
+  <meta name="robots" content="index, follow">
+  
+  <meta property="og:title" content="Travel enjoyed | ccac course catalog">
+  <meta property="og:description" content="Home - Travel enjoyed provides professional General services. Specializing in ccac course catalog.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="en_US">
+  
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Travel enjoyed | ccac course catalog">
+  <meta name="twitter:description" content="Home - Travel enjoyed provides professional General services. Specializing in ccac course catalog.">
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="/assets/favicon-48x48.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/assets/favicon-512x512.png">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+    <!-- Cookie Consent -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vanilla-cookieconsent@3/dist/cookieconsent.css" />
+    <script src="https://cdn.jsdelivr.net/npm/vanilla-cookieconsent@3/dist/cookieconsent.umd.js"></script>
+    <!-- Mickidum Accessibility Toolbar -->
+    <script src="https://cdn.jsdelivr.net/gh/mickidum/acc_toolbar/acctoolbar/acctoolbar.min.js"></script>
+<!-- Zappy Analytics -->
+<script>
+(function() {
+  'use strict';
+  
+  // Configuration
+  var config = {
+    websiteId: 'c7ae8049-bba6-48a1-aefa-eaec29c59fea',
+    apiUrl: 'https://api.zappy5.com/api/analytics/track',
+    sessionDuration: 30 * 60 * 1000, // 30 minutes
+    visitorDuration: 30 * 24 * 60 * 60 * 1000, // 30 days
+    trackPageViews: true,
+    trackClicks: true,
+    trackFormSubmissions: true
+  };
+  
+  // Generate or retrieve persistent visitor ID (30 days)
+  function getVisitorId() {
+    var visitorKey = 'zappy_visitor_' + config.websiteId;
+    var visitor = null;
+    
+    try {
+      visitor = localStorage.getItem(visitorKey);
+      if (visitor) {
+        var visitorData = JSON.parse(visitor);
+        var now = Date.now();
+        
+        // Check if visitor ID is still valid (30 days)
+        if (now - visitorData.created < config.visitorDuration) {
+          // Update last seen timestamp
+          visitorData.lastSeen = now;
+          localStorage.setItem(visitorKey, JSON.stringify(visitorData));
+          return visitorData.id;
+        }
+      }
+    } catch (e) {
+      console.warn('Zappy Analytics: LocalStorage not available');
+    }
+    
+    // Generate new visitor ID
+    var newVisitorId = 'zv_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+    
+    try {
+      localStorage.setItem(visitorKey, JSON.stringify({
+        id: newVisitorId,
+        created: Date.now(),
+        lastSeen: Date.now()
+      }));
+    } catch (e) {
+      // Continue without local storage
+    }
+    
+    return newVisitorId;
+  }
+  
+  // Generate or retrieve session ID (30 minutes)
+  function getSessionId() {
+    var sessionKey = 'zappy_session_' + config.websiteId;
+    var session = null;
+    
+    try {
+      session = sessionStorage.getItem(sessionKey);
+      if (session) {
+        var sessionData = JSON.parse(session);
+        var now = Date.now();
+        
+        // Check if session is still valid
+        if (now - sessionData.timestamp < config.sessionDuration) {
+          // Update timestamp
+          sessionData.timestamp = now;
+          sessionStorage.setItem(sessionKey, JSON.stringify(sessionData));
+          return sessionData.id;
+        }
+      }
+    } catch (e) {
+      console.warn('Zappy Analytics: SessionStorage not available');
+    }
+    
+    // Generate new session ID
+    var newSessionId = 'zs_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+    
+    try {
+      sessionStorage.setItem(sessionKey, JSON.stringify({
+        id: newSessionId,
+        timestamp: Date.now()
+      }));
+    } catch (e) {
+      // Continue without session storage
+    }
+    
+    return newSessionId;
+  }
+  
+  var visitorId = getVisitorId();
+  var sessionId = getSessionId();
+  
+  // Track an event
+  function trackEvent(eventType, data) {
+    data = data || {};
+    
+    var eventData = {
+      website_id: config.websiteId,
+      event_type: eventType,
+      page_path: window.location.pathname,
+      referrer: document.referrer || 'direct',
+      visitor_id: visitorId,
+      session_id: sessionId,
+      metadata: data
+    };
+    
+    // Use sendBeacon if available (better for page unload events)
+    if (navigator.sendBeacon) {
+      var blob = new Blob([JSON.stringify(eventData)], { type: 'application/json' });
+      navigator.sendBeacon(config.apiUrl, blob);
+    } else {
+      // Fallback to fetch
+      fetch(config.apiUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(eventData),
+        keepalive: true
+      }).catch(function(error) {
+        console.warn('Zappy Analytics: Failed to track event', error);
+      });
+    }
+  }
+  
+  // Track page view
+  if (config.trackPageViews) {
+    trackEvent('pageview', {
+      title: document.title,
+      url: window.location.href
+    });
+  }
+  
+  // Track clicks on important elements
+  if (config.trackClicks) {
+    document.addEventListener('click', function(e) {
+      var target = e.target;
+      
+      // Track button clicks (counted as actions)
+      if (target.tagName === 'BUTTON' || target.closest('button')) {
+        var button = target.tagName === 'BUTTON' ? target : target.closest('button');
+        trackEvent('click', {
+          element: 'button',
+          text: button.textContent.trim().substring(0, 100),
+          id: button.id || null,
+          class: button.className || null
+        });
+      }
+      
+      // Track link clicks (navigation - not counted as actions)
+      else if (target.tagName === 'A' || target.closest('a')) {
+        var link = target.tagName === 'A' ? target : target.closest('a');
+        trackEvent('navigation', {
+          element: 'link',
+          text: link.textContent.trim().substring(0, 100),
+          href: link.href,
+          external: link.hostname !== window.location.hostname
+        });
+      }
+    }, true);
+  }
+  
+  // Track form submissions
+  if (config.trackFormSubmissions) {
+    document.addEventListener('submit', function(e) {
+      var form = e.target;
+      
+      trackEvent('form_submit', {
+        form_id: form.id || null,
+        form_name: form.name || null,
+        form_action: form.action || null,
+        form_method: form.method || 'GET'
+      });
+    }, true);
+  }
+  
+  // Track time on page (send on page unload)
+  var pageLoadTime = Date.now();
+  
+  window.addEventListener('beforeunload', function() {
+    var timeOnPage = Math.floor((Date.now() - pageLoadTime) / 1000); // in seconds
+    
+    trackEvent('page_unload', {
+      time_on_page: timeOnPage,
+      page_path: window.location.pathname
+    });
+  });
+  
+  // Expose tracking function globally for custom events
+  window.zappyAnalytics = {
+    track: trackEvent,
+    getVisitorId: function() { return visitorId; },
+    getSessionId: function() { return sessionId; }
+  };
+  
+})();
+</script>
+<!-- End Zappy Analytics -->
+
+    <style id="zappy-dropdown-submenu-styles">
+      /* ========== DESKTOP DROPDOWN SUBMENU STYLES ========== */
+      /* Base styles for dropdown submenus - parent must be positioned */
+      .nav-menu li:has(.sub-menu), nav li:has(.sub-menu), .navbar li:has(.sub-menu), #navMenu li:has(.sub-menu) { position: relative; }
+      /* Submenu base - hidden by default */
+      .nav-menu .sub-menu, nav .sub-menu, .navbar .sub-menu, #navMenu .sub-menu { display: block !important; position: absolute !important; top: 100%; left: 0; min-width: 220px; background: white; border-radius: 8px; box-shadow: 0 8px 25px rgba(0,0,0,0.15); padding: 8px 0; opacity: 0; visibility: hidden; transform: translateY(10px); transition: all 0.3s ease; z-index: 1000; list-style: none; pointer-events: none; }
+      /* CRITICAL: Desktop hover styles to show dropdown */
+      .nav-menu li:hover > .sub-menu, nav li:hover > .sub-menu, .navbar li:hover > .sub-menu, #navMenu li:hover > .sub-menu { opacity: 1 !important; visibility: visible !important; transform: translateY(0) !important; pointer-events: auto !important; }
+      /* Submenu item styling */
+      .sub-menu li { list-style: none; margin: 0; padding: 0; }
+      .sub-menu a { display: block !important; padding: 10px 16px !important; color: #333 !important; font-weight: 500; text-decoration: none; white-space: nowrap; transition: background-color 0.2s; }
+      .sub-menu a:hover { background-color: #f5f5f5; }
+      /* RTL (Hebrew/Arabic) dropdown positioning */
+      [dir="rtl"] .nav-menu .sub-menu, [dir="rtl"] nav .sub-menu, [dir="rtl"] .navbar .sub-menu, html[lang="he"] .nav-menu .sub-menu, html[lang="he"] nav .sub-menu, html[lang="he"] .navbar .sub-menu, html[lang="ar"] .nav-menu .sub-menu, html[lang="ar"] nav .sub-menu, html[lang="ar"] .navbar .sub-menu { left: auto !important; right: 0 !important; }
+      /* Hide empty dropdown menus */
+      .sub-menu:empty, .sub-menu:not(:has(li:not(.zappy-hidden-menu-item))), .sub-menu:not(:has(li)) { display: none !important; opacity: 0 !important; visibility: hidden !important; pointer-events: none !important; }
+      /* Desktop: show submenu on Menu Group hover */
+      li:has(.menu-group-title):hover > .sub-menu { opacity: 1 !important; visibility: visible !important; transform: translateY(0) !important; pointer-events: auto !important; }
+      /* Menu Group title styling */
+      .nav-menu > li > .menu-group-title, #navMenu > li > .menu-group-title { display: inline-block; padding: 0.5rem 1rem; cursor: default; user-select: none; }
+      
+      /* ========== MOBILE SUBMENU STYLES ========== */
+      @media (max-width: 768px) {
+        .nav-menu .sub-menu, nav .sub-menu, .navbar .sub-menu, #navMenu .sub-menu { position: static !important; transform: none !important; box-shadow: none !important; background: transparent !important; max-height: 0; overflow: hidden; opacity: 0; visibility: hidden; transition: max-height 0.3s ease, opacity 0.3s ease; padding: 0 !important; border-radius: 0 !important; }
+        .sub-menu.mobile-expanded { max-height: 500px !important; opacity: 1 !important; visibility: visible !important; padding: 8px 0 8px 16px !important; }
+        [dir="rtl"] .sub-menu.mobile-expanded, html[lang="he"] .sub-menu.mobile-expanded { padding: 8px 16px 8px 0 !important; }
+        /* Disable hover behavior on mobile */
+        .nav-menu li:hover > .sub-menu, nav li:hover > .sub-menu, .navbar li:hover > .sub-menu, #navMenu li:hover > .sub-menu { opacity: 0; visibility: hidden; pointer-events: none; }
+        .nav-menu li > .sub-menu.mobile-expanded, nav li > .sub-menu.mobile-expanded, .navbar li > .sub-menu.mobile-expanded, #navMenu li > .sub-menu.mobile-expanded { opacity: 1 !important; visibility: visible !important; pointer-events: auto !important; }
+        .nav-menu li:has(.sub-menu), nav li:has(.sub-menu), .navbar li:has(.sub-menu), #navMenu li:has(.sub-menu) { display: flex !important; flex-wrap: wrap !important; align-items: center !important; }
+        .nav-menu li:has(.sub-menu) > a, nav li:has(.sub-menu) > a, .navbar li:has(.sub-menu) > a, #navMenu li:has(.sub-menu) > a { flex: 1 !important; }
+        .nav-menu li:has(.sub-menu) > a [class*="chevron"], .nav-menu li:has(.sub-menu) > a [class*="arrow"], .nav-menu li:has(.sub-menu) > a .fa-chevron-down, .nav-menu li:has(.sub-menu) > a .fa-angle-down, nav li:has(.sub-menu) > a [class*="chevron"], nav li:has(.sub-menu) > a [class*="arrow"], #navMenu li:has(.sub-menu) > a [class*="chevron"], #navMenu li:has(.sub-menu) > a [class*="arrow"] { display: none !important; visibility: hidden !important; }
+        .mobile-submenu-toggle { display: flex !important; align-items: center !important; justify-content: center !important; width: 44px !important; height: 44px !important; background: transparent !important; border: none !important; cursor: pointer !important; }
+        .mobile-submenu-toggle::after { content: '' !important; width: 0 !important; height: 0 !important; border-left: 6px solid transparent !important; border-right: 6px solid transparent !important; border-top: 7px solid currentColor !important; transition: transform 0.3s ease !important; }
+        .mobile-submenu-toggle.expanded::after { transform: rotate(180deg) !important; }
+        .nav-menu li:has(.sub-menu) > .sub-menu, nav li:has(.sub-menu) > .sub-menu { flex-basis: 100% !important; width: 100% !important; }
+        .sub-menu a { padding: 10px 0 !important; display: block !important; }
+        .nav-menu li:has(.sub-menu) > .menu-group-title, nav li:has(.sub-menu) > .menu-group-title, .navbar li:has(.sub-menu) > .menu-group-title, #navMenu li:has(.sub-menu) > .menu-group-title { flex: 1 !important; }
+      }
+      @media (min-width: 769px) { .mobile-submenu-toggle { display: none !important; } }
+    </style>
+</head>
+<body>
+
+    <div class="mobile-search-panel" id="mobile-search-panel">
+      <div class="search-wrapper">
+        <input type="text" id="mobile-search-input" placeholder="Search products..." autocomplete="off">
+        <button class="search-submit" id="mobile-search-submit" title="Search">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+        </button>
+        <button class="close-search" id="close-mobile-search">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <div class="search-results" id="mobile-search-results"></div>
+    </div>
+  
+<script>window.ZAPPY_WEBSITE_ID = "c7ae8049-bba6-48a1-aefa-eaec29c59fea";window.ZAPPY_API_BASE = (window.location.pathname.includes('/preview') ? "https://api.zappy5.com" : "https://api.zappy5.com");</script>
+  <nav class="navbar">
+  <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
+    <svg class="hamburger-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <path d="M3 12h18M3 6h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+    </svg>
+    <svg class="close-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" style="display:none;">
+      <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+    </svg>
+  </button>
+  
+  <button class="phone-header-btn" aria-label="Call">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+    </svg>
+  </button>
+  
+  <div class="nav-container">
+    <div class="nav-brand">
+      <a href="/" class="logo-link">
+        <img src="/assets/business-logo.webp" alt="Travel enjoyed" class="logo" />
+      </a>
+    </div>
+    
+    <ul class="nav-menu" id="navMenu">
+
+    <li class="menu-item-has-children zappy-products-dropdown">
+      <a href="/products">
+        Products
+        <svg class="dropdown-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M6 9l6 6 6-6"></path>
+        </svg>
+      </a>
+      <ul class="sub-menu" id="zappy-nav-category-links">
+        <li><a href="/products">All Products</a></li>
+        <!-- Categories will be loaded dynamically -->
+      </ul>
+    </li>
+  <li><a href="/about">About</a></li><li><a href="/offerings">Offerings</a></li><li><a href="/contact">Contact</a></li></ul><div class="nav-ecommerce-icons nav-icons-left"><div class="nav-search-box">
+    <input type="text" class="nav-search-input" id="nav-search-input" placeholder="Search products..." autocomplete="off">
+    <button class="nav-search-btn" id="nav-search-btn" title="Search">
+      <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+    </button>
+    <div class="nav-search-results" id="nav-search-results"></div>
+  </div></div><div class="nav-ecommerce-icons nav-icons-right"><button class="nav-search-toggle" id="mobile-search-toggle" title="Search"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg></button></div>
+    
+    
+  </div>
+</nav>
+
+    <nav class="zappy-catalog-menu ltr" id="zappy-catalog-menu" dir="ltr">
+      <div class="catalog-menu-container">
+        <a href="/products" class="catalog-menu-item catalog-menu-all">All Products</a>
+        <div class="catalog-menu-categories" id="zappy-category-links">
+          <!-- Categories will be loaded dynamically -->
+        </div>
+      </div>
+    </nav>
+  
+  
+  <main>
+    <section class="home-hero-section" data-layout-spec="Home-hero" data-hero-type="fullscreen-scrim">
+  <div class="home-hero-bg-wrapper">
+    <img data-placeholder="home-hero-bg" data-context="Bright daylight travel scene: modern airport terminal with floor-to-ceiling windows, natural sunlight streaming in, clean white architectural lines, crisp blue sky visible outside, professional business travelers with luggage in soft focus background, brochure-quality photography with excellent color grading, bright and inviting atmosphere, premium travel aesthetic" data-preserve-bg="0" width="1920" height="1080" src="/assets/site-home-hero-bg.webp" alt="Bright modern travel environment" class="home-hero-bg-image">
+    <div class="home-hero-scrim"></div>
+  </div>
+  
+  <div class="home-hero-content-wrapper">
+    <div class="home-hero-overlay-card">
+      <h1 class="home-hero-headline">Trustworthy solutions for everyday needs.</h1>
+      <h3 class="home-hero-subtitle">A concise promise statement about reliability, clarity, and quick next steps.</h3>
+      <div class="home-hero-cta-row">
+        <a href="#contact" class="home-hero-btn-primary">Contact us</a>
+        <a href="#about" class="home-hero-btn-secondary">Learn more</a>
+      </div>
+    </div>
+  </div>
+  
+  <div class="home-hero-divider-wrapper">
+    <svg data-no-icon-edit="true" aria-hidden="true" viewBox="0 0 1200 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="wingGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" style="stop-color:#20304F;stop-opacity:0.95"></stop>
+          <stop offset="100%" style="stop-color:#20304F;stop-"></stop>
+        </linearGradient>
+      </defs>
+      <path d="M0,0 L600,0 L1200,120 L1200,120 L0,120 Z" fill="url(#wingGradient)"></path>
+    </svg>
+  </div>
+</section>
+
+    <section class="featured-products-section" id="featured-products" data-zappy-dynamic="true">
+      <div class="container">
+        <h2 class="section-title">Featured Products</h2>
+        <div class="product-grid featured-grid" id="zappy-featured-products">
+          <div class="loading-products">Loading products...</div>
+        </div>
+        <div class="view-all-products">
+          <a href="/products" class="btn btn-primary">View All Products →</a>
+        </div>
+      </div>
+    </section>
+  
+
+    <section class="featured-categories-section" id="featured-categories" data-zappy-dynamic="true">
+      <div class="container">
+        <h2 class="section-title">Shop by Category</h2>
+        <div class="category-blocks" id="zappy-featured-categories">
+          <div class="loading-categories">Loading products...</div>
+        </div>
+      </div>
+    </section>
+  
+
+<section class="home-services-section" data-layout-spec="Home-services">
+  <div class="home-services-container">
+    <div class="home-services-header">
+      <h2>What we help you with</h2>
+      <p>From initial planning to ongoing support, we provide comprehensive services tailored to your travel needs. Our catalog covers everything you need for confident, enjoyable journeys.</p>
+    </div>
+    
+    <div class="home-services-grid">
+      <article class="home-services-card">
+        <h3>Consulting</h3>
+        <p>Expert guidance to shape your travel vision into actionable plans that fit your timeline and budget.</p>
+        <a href="#contact" class="home-services-link">Talk to us</a>
+      </article>
+      
+      <article class="home-services-card">
+        <h3>Planning</h3>
+        <p>Detailed itinerary design with logistics, accommodations, and experiences mapped out step by step.</p>
+        <a href="#contact" class="home-services-link">Talk to us</a>
+      </article>
+      
+      <article class="home-services-card">
+        <h3>Support</h3>
+        <p>Real-time assistance during your journey to handle changes, questions, and unexpected situations.</p>
+        <a href="#contact" class="home-services-link">Talk to us</a>
+      </article>
+      
+      <article class="home-services-card">
+        <h3>Implementation</h3>
+        <p>Seamless execution of bookings, reservations, and coordination to bring your travel plan to life.</p>
+        <a href="#contact" class="home-services-link">Talk to us</a>
+      </article>
+      
+      <article class="home-services-card">
+        <h3>Optimization</h3>
+        <p>Continuous refinement of routes, schedules, and services to maximize value and experience quality.</p>
+        <a href="#contact" class="home-services-link">Talk to us</a>
+      </article>
+      
+      <article class="home-services-card">
+        <h3>Ongoing care</h3>
+        <p>Post-trip follow-up and future planning support to keep your travel experiences improving year after year.</p>
+        <a href="#contact" class="home-services-link">Talk to us</a>
+      </article>
+    </div>
+  </div>
+  
+  <div class="home-services-divider-wrapper">
+    <svg data-no-icon-edit="true" aria-hidden="true" viewBox="0 0 1200 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,60 L0,30 Q150,25 300,30 T600,25 Q750,30 900,25 T1200,30 L1200,60 Z" fill="var(--bg-dark)"></path>
+    </svg>
+  </div>
+</section>
+
+<section class="home-showcase-section" data-layout-spec="Home-showcase">
+  <div class="home-showcase-container">
+    <div class="home-showcase-content">
+      <h2>A quick look at recent work</h2>
+      <p>Every project we undertake reflects our commitment to quality and attention to detail. From initial planning to final delivery, we ensure exceptional outcomes that exceed expectations.</p>
+      <div class="home-showcase-bullets">
+        <p>✓ Clean, professional environments</p>
+        <p>✓ Collaborative team approach</p>
+        <p>✓ Comprehensive documentation</p>
+        <p>✓ On-site quality verification</p>
+      </div>
+    </div>
+    <div class="home-showcase-imagery">
+      <div class="home-showcase-grid">
+        <div class="home-showcase-grid-item">
+          <img data-placeholder="home-showcase-image-1" data-context="Clean professional product photography showing organized workspace with modern equipment and bright daylight, minimal composition, general business setting" width="400" height="300" src="/assets/site-home-showcase-image-1.webp" alt="Professional workspace with organized equipment">
+        </div>
+        <div class="home-showcase-grid-item">
+          <img data-placeholder="home-showcase-image-2" data-context="Team collaboration scene with diverse professionals working together in bright modern office, natural daylight, warm atmosphere" width="400" height="300" src="/assets/site-home-showcase-image-2.webp" alt="Team members collaborating on project">
+        </div>
+        <div class="home-showcase-grid-item">
+          <img data-placeholder="home-showcase-image-3" data-context="Tidy modern workspace with clean desk, organized documents, laptop, bright natural lighting, professional business environment" width="400" height="300" src="/assets/site-home-showcase-image-3.webp" alt="Organized workspace with documentation">
+        </div>
+        <div class="home-showcase-grid-item">
+          <img data-placeholder="home-showcase-image-4" data-context="Professional documentation and planning materials spread on clean surface, bright daylight, organized business setting" width="400" height="300" src="/assets/site-home-showcase-image-4.webp" alt="Project documentation and planning materials">
+        </div>
+        <div class="home-showcase-grid-item">
+          <img data-placeholder="home-showcase-image-5" data-context="On-site visit scene showing professional inspecting or reviewing work in bright daylight, clean professional environment" width="400" height="300" src="/assets/site-home-showcase-image-5.webp" alt="On-site quality inspection">
+        </div>
+        <div class="home-showcase-grid-item">
+          <img data-placeholder="home-showcase-image-6" data-context="Before and after comparison style image showing improvement or transformation in clean professional environment, bright daylight" width="400" height="300" src="/assets/site-home-showcase-image-6.webp" alt="Project transformation results">
+        </div>
+      </div>
+      <div class="home-showcase-backplate"></div>
+    </div>
+  </div>
+  <div class="home-showcase-divider-wrapper">
+    <svg data-no-icon-edit="true" aria-hidden="true" viewBox="0 0 1200 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern id="perforation-pattern" x="0" y="0" width="40" height="60" patternUnits="userSpaceOnUse">
+          <circle cx="20" cy="10" r="6" fill="var(--bg-light)"></circle>
+        </pattern>
+      </defs>
+      <rect x="0" y="0" width="1200" height="60" fill="#F5F3EF"></rect>
+      <rect x="0" y="0" width="1200" height="60" fill="url(#perforation-pattern)"></rect>
+    </svg>
+  </div>
+</section>
+
+<section class="home-testimonials-section" data-layout-spec="Home-testimonials">
+  <div class="home-testimonials-container">
+    <div class="home-testimonials-title-block">
+      <h2>Trusted by people like you.</h2>
+      <p>We're committed to clear communication and consistent service, ensuring every interaction reflects our dedication to your satisfaction and peace of mind.</p>
+    </div>
+
+    <div class="home-testimonials-grid">
+      <article class="home-testimonials-card">
+        <h3>"Clear and straightforward"</h3>
+        <p>Every detail was explained thoroughly, and there were no surprises along the way. I appreciated the transparency and the straightforward approach to everything.</p>
+        <p class="home-testimonials-attribution">— Sarah M.</p>
+      </article>
+
+      <article class="home-testimonials-card">
+        <h3>"Quick responses, no delays"</h3>
+        <p>I was impressed by how fast they got back to me. Questions were answered promptly, and the entire process moved smoothly without unnecessary waiting.</p>
+        <p class="home-testimonials-attribution">— James L.</p>
+      </article>
+
+      <article class="home-testimonials-card">
+        <h3>"Reliable from start to finish"</h3>
+        <p>They delivered exactly what was promised, on time and with care. It's refreshing to work with a team that follows through consistently and professionally.</p>
+        <p class="home-testimonials-attribution">— Maria K.</p>
+      </article>
+    </div>
+
+    <div class="home-testimonials-trust-bar">
+      <div class="home-testimonials-trust-item">
+        <p>Years of experience</p>
+      </div>
+      <div class="home-testimonials-trust-divider"></div>
+      <div class="home-testimonials-trust-item">
+        <p>Same-day responses</p>
+      </div>
+      <div class="home-testimonials-trust-divider"></div>
+      <div class="home-testimonials-trust-item">
+        <p>High satisfaction rate</p>
+      </div>
+      <div class="home-testimonials-trust-divider"></div>
+      <div class="home-testimonials-trust-item">
+        <p>Nationwide coverage</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="home-testimonials-divider-wrapper">
+    <svg data-no-icon-edit="true" aria-hidden="true" viewBox="0 0 1200 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="testimonials-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" style="stop-color:#FAFAF7;stop-opacity:1"></stop>
+          <stop offset="100%" style="stop-color:#0B1220;stop-opacity:1"></stop>
+        </linearGradient>
+      </defs>
+      <path d="M0,120 L0,30 Q300,45 600,30 T1200,30 L1200,120 Z" fill="url(#testimonials-gradient)"></path>
+    </svg>
+  </div>
+</section>
+
+<section class="home-cta-section" data-layout-spec="Home-cta">
+  <div class="home-cta-container">
+    <div class="home-cta-content">
+      <h2>Ready to get a clear answer?</h2>
+      <p>Invite visitors to share their needs and receive a straightforward response.</p>
+      <a href="/contact" class="btn-primary">Contact us</a>
+    </div>
+    <div class="home-cta-visual">
+      <div class="home-cta-illustration-tile">
+        <svg data-no-icon-edit="true" aria-hidden="true" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+          <rect x="60" y="80" width="280" height="240" rx="8" fill="none" stroke="var(--border-light)" stroke-width="2" opacity="0.3"></rect>
+          <circle cx="200" cy="140" r="40" fill="var(--accent)" opacity="0.2"></circle>
+          <path d="M120 200 L200 160 L280 200" fill="none" stroke="var(--secondary)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
+          <rect x="140" y="240" width="120" height="40" rx="4" fill="var(--primary)" opacity="0.15"></rect>
+          <line x1="100" y1="320" x2="300" y2="320" stroke="var(--border-light)" stroke-width="2" stroke-linecap="round" opacity="0.4"></line>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+  </main>
+  
+  <footer class="site-footer"><div class="footer-container"><div class="footer-grid"><div class="footer-column footer-about"><img src="/assets/business-logo.webp" alt="Travel enjoyed" class="logo" /><p class="footer-description">Discover amazing destinations and create unforgettable memories with Travel enjoyed. Your journey begins here.</p><div class="social-links"><a href="[facebook_handle]" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a><a href="[instagram_handle]" aria-label="Instagram"><i class="fab fa-instagram"></i></a><a href="[whatsapp_handle]" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a></div></div><div class="footer-column"><h3 class="footer-heading">Quick Links</h3><ul class="footer-links"><li><a href="/about">About</a></li><li><a href="/offerings">Offerings</a></li><li><a href="/contact">Contact</a></li></ul></div><div class="footer-column"><h3 class="footer-heading">Contact Us</h3><ul class="footer-contact"><li><i class="fas fa-envelope"></i><a href="mailto:[business_email]">[business_email]</a></li><li><i class="fas fa-phone"></i><a href="tel:[business_phone]">[business_phone]</a></li><li><a href="/"><i class="fas fa-map-marker-alt"></i><span>[business_address]</span></a></li></ul></div><div class="footer-column"><h3 class="footer-heading">Legal</h3><ul class="footer-links"><li><a href="/privacy">Privacy Policy</a></li><li><a href="/terms">Terms &amp; Conditions</a><span class="separator">|</span>
+            <a href="/return-policy" aria-label="Return Policy">
+              Return Policy
+            </a></li><li><a href="/accessibility">Accessibility</a></li></ul></div></div><div class="footer-bottom"><div class="footer-bottom-content"><p class="copyright">© 2026 Travel enjoyed. All rights reserved.</p><a href="https://zappy5.com" target="_blank" class="zappy-attribution">Generated by Zappy</a></div></div></div></footer>
+  
+  <a href="https://wa.me/[whatsapp_handle]" class="whatsapp-float" aria-label="WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+  
+  <script src="/script.js"></script>
+
+    <div data-integration="accessibility:toolbar"></div>
+
+    <script id="zappy-mobile-submenu-script">
+    (function() {
+      function initMobileSubmenuToggles() {
+        if (window.innerWidth > 768) {
+          document.querySelectorAll('.mobile-submenu-toggle').forEach(function(btn) { btn.remove(); });
+          document.querySelectorAll('.sub-menu.mobile-expanded').forEach(function(menu) { menu.classList.remove('mobile-expanded'); });
+          return;
+        }
+        var items = document.querySelectorAll('.nav-menu li:has(.sub-menu), nav li:has(.sub-menu), .navbar li:has(.sub-menu), #navMenu li:has(.sub-menu)');
+        items.forEach(function(li) {
+          if (li.querySelector('.mobile-submenu-toggle')) return;
+          var submenu = li.querySelector('.sub-menu');
+          var parentLink = li.querySelector(':scope > a');
+          if (!submenu || !parentLink) return;
+          var toggleBtn = document.createElement('button');
+          toggleBtn.className = 'mobile-submenu-toggle';
+          toggleBtn.setAttribute('aria-label', 'Toggle submenu');
+          toggleBtn.setAttribute('type', 'button');
+          parentLink.insertAdjacentElement('afterend', toggleBtn);
+          toggleBtn.addEventListener('click', function(e) {
+            e.preventDefault(); e.stopPropagation();
+            document.querySelectorAll('.sub-menu.mobile-expanded').forEach(function(menu) {
+              if (menu !== submenu) { menu.classList.remove('mobile-expanded'); var t = menu.parentElement.querySelector('.mobile-submenu-toggle'); if(t) t.classList.remove('expanded'); }
+            });
+            submenu.classList.toggle('mobile-expanded');
+            toggleBtn.classList.toggle('expanded');
+          });
+        });
+      }
+      if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', initMobileSubmenuToggles); }
+      else { initMobileSubmenuToggles(); }
+      var resizeTimer; window.addEventListener('resize', function() { clearTimeout(resizeTimer); resizeTimer = setTimeout(initMobileSubmenuToggles, 250); });
+      // Re-initialize when mobile menu becomes visible (MutationObserver)
+      var observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+          if (mutation.type === 'attributes') {
+            var target = mutation.target;
+            if (target.classList && (target.classList.contains('active') || target.classList.contains('open'))) {
+              setTimeout(initMobileSubmenuToggles, 100);
+            }
+          }
+        });
+      });
+      setTimeout(function() {
+        document.querySelectorAll('.mobile-menu, .nav-menu, #navMenu, nav').forEach(function(menu) {
+          observer.observe(menu, { attributes: true, attributeFilter: ['class', 'style'] });
+        });
+      }, 500);
+    })();
+    </script>
+</body></html>
